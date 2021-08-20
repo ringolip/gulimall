@@ -1,0 +1,33 @@
+## 配置数据源
+#spring:
+#  datasource:
+#    username: root
+#    password: root
+#    url: jdbc:mysql://192.168.186.146:3306/gulimall_sms?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#  cloud:
+#    nacos:
+#      #  Nacos Server地址
+#      discovery:
+#        server-addr: 127.0.0.1:8848
+#  #  应用名称，用于Nacos服务注册与发现
+#  application:
+#    name: gulimall-coupon
+#
+## MapperScan
+## sql映射文件位置
+#mybatis-plus:
+#  mapper-locations: classpath:/mapper/**/*.xml
+#  global-config:
+#    db-config:
+#      #  主键自增
+#      id-type: auto
+#
+#
+#
+#server:
+#  # 在7000端口运行
+#  # 用于Nacos服务注册与发现
+#  port: 7000
+#
+#

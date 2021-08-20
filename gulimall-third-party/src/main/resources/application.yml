@@ -1,0 +1,24 @@
+# 项目名称，用于Nacos注册与发现
+spring:
+  application:
+    name: gulimall-third-party
+
+  # Nacos 服务注册与发现
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+#    alicloud:
+#      oss:
+#        endpoint: oss-cn-shanghai.aliyuncs.com
+#        bucket: shamo-gulimall
+#      access-key: LTAI5tGBwKkA4WoPp1f3LW62
+#      secret-key: us7SEZQUD6VxdqYZPd9k6p3Gl41fno
+
+# 项目运行端口
+server:
+  port: 30000
+
+logging:
+  level:
+    com.shamo.gulimall.product: debug

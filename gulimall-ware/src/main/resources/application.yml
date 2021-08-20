@@ -1,0 +1,37 @@
+# 配置数据源
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://192.168.186.146:3306/gulimall_wms?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  cloud:
+    # 开启Nacos服务注册与发现
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+  # 服务名称，用于服务注册与发现
+  application:
+    name: gulimall-ware
+  # 设置时间时，设置为东八区时间
+  jackson:
+    time-zone: GMT+8
+
+
+# MapperScan
+# sql映射文件位置
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*.xml
+  global-config:
+    db-config:
+      #  主键自增
+      id-type: auto
+
+server:
+  # 在11000端口运行
+  port: 11000
+
+# 日志打印sql语句
+logging:
+  level:
+    com.shamo.gulimall: debug

@@ -7,17 +7,25 @@
     <artifactId>gulimall</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>gulimall</name>
-    <description>聚合服务</description>
+    <description>谷粒商城-聚合服务</description>
 
     <packaging>pom</packaging>
 
+    <!--  聚合子项目  -->
     <modules>
+        <module>gulimall-common</module>
+
         <module>gulimall-coupon</module>
         <module>gulimall-member</module>
         <module>gulimall-order</module>
         <module>gulimall-product</module>
         <module>gulimall-ware</module>
+        <module>gulimall-gateway</module>
+        <module>gulimall-third-party</module>
+        <module>gulimall-search</module>
 
+        <module>renren-fast</module>
+        <module>renren-generator</module>
     </modules>
 
 </project>

@@ -1,0 +1,71 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+#  仓储服务
+        - id: ware_route
+          #  目的地
+          uri: lb://gulimall-ware # 负载均衡
+          #  断言为真就去目的地
+          #  精确匹配先放在上面
+          predicates:
+            - Path=/api/ware/** # 前端请求均带有/api/
+          filters:
+            # 路径重写，去掉/api/
+            - RewritePath=/api/(?<segment>.*), /$\{segment}
+
+#  会员服务
+        - id: member_route
+          #  目的地
+          uri: lb://gulimall-member # 负载均衡
+          #  断言为真就去目的地
+          #  精确匹配先放在上面
+          predicates:
+            - Path=/api/member/** # 前端请求均带有/api/
+          filters:
+            # 路径重写，去掉/api/
+            - RewritePath=/api/(?<segment>.*), /$\{segment}
+
+#  商品服务
+        - id: product_route
+          #  目的地
+          uri: lb://gulimall-product # 负载均衡
+          #  断言为真就去目的地
+          #  精确匹配先放在上面
+          predicates:
+            - Path=/api/product/**, /hello # 前端请求均带有/api/
+          filters:
+            # 路径重写，去掉/api/
+            - RewritePath=/api/(?<segment>.*), /$\{segment}
+
+#  第三方服务
+        - id: third_party_route
+          #  目的地
+          uri: lb://gulimall-third-party # 负载均衡
+          #  断言为真就去目的地
+          #  精确匹配先放在上面
+          predicates:
+            - Path=/api/thirdparty/** # 前端请求均带有/api/
+          filters:
+            # 路径重写，去掉/api/
+            - RewritePath=/api/thirdparty/(?<segment>/?.*),/$\{segment}
+
+# renren-fast
+        - id: admin_route
+          #  目的地
+          uri: lb://renren-fast # 负载均衡至renren-fast
+          #  断言为真就去目的地
+          predicates:
+            - Path=/api/** # 前端请求均带有/api/
+          filters:
+            # 路径重写，去掉/api/，把/api/* 改变成 /renren-fast/*
+            - RewritePath=/api/(?<segment>.*), /renren-fast/$\{segment}
+
+#  gulimall.com映射
+        - id: gulimall_route
+          #  目的地
+          uri: lb://gulimall-product # 负载均衡
+          #  断言为真就去目的地
+          #  精确匹配先放在上面
+          predicates:
+            - Host=**.gulimall.com, gulimall.com # 匹配Host为gulimall.com的请求
